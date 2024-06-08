@@ -1,11 +1,11 @@
 import React from 'react';
-import ReservationForm from './reservation-form';
 import CardWrapper from '../card-wrapper';
+import CustomerForm from './customer-form';
 
-export default function ReservationCard() {
+export default function CustomerCard() {
   return (
     <CardWrapper>
-      <ReservationForm />
+      <CustomerForm />
     </CardWrapper>
   );
 }

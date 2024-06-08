@@ -40,7 +40,7 @@ export default function ReservationForm() {
             name='pickupDateTime'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Pickup Date<span className='text-red-600'>*</span></FormLabel>
+                <FormLabel>Pickup Date <span className='text-red-600'>*</span></FormLabel>
                 <Input
                   {...field}
                   type='datetime-local'
@@ -54,7 +54,7 @@ export default function ReservationForm() {
             name='returnDateTime'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Return Date<span className='text-red-600'>*</span></FormLabel>
+                <FormLabel>Return Date <span className='text-red-600'>*</span></FormLabel>
                 <Input
                   {...field}
                   type='datetime-local'

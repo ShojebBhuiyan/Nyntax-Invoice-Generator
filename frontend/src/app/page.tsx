@@ -1,9 +1,9 @@
-import Image from "next/image";
+import ReservationHeader from "@/components/reservation/reservation-header";
 
 export default function Home() {
   return (
-    <main>
-
+    <main className="container py-6">
+      <ReservationHeader />
     </main>
   );
 }

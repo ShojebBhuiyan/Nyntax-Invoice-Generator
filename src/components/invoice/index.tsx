@@ -46,7 +46,7 @@ export default function Invoice() {
           <p className='text-sm font-normal'>{`Make & Model: ${rentalContext?.vehicle?.make + " " + rentalContext?.vehicle?.model}`}</p>
 
 
-          <p className='text-sm font-normal'>{`BILL TO: ${name}`}</p>
+          <p className='text-sm font-normal'>{`BILL TO: ${rentalContext?.firstName + " " + rentalContext?.lastName}`}</p>
           <p className='text-sm font-normal'>{`Payment Type: Unpaid`}</p>
           <p className='text-sm font-normal'>{`AUTH: $0.00`}</p>
 

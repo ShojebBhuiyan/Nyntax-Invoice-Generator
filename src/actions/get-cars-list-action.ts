@@ -27,8 +27,6 @@ export async function getCarsList(): Promise<{ [key: string]: Car[]; }> {
       groupedCars[car.type].push(car);
     });
 
-    console.log(groupedCars);
-
     return groupedCars;
   } catch (error) {
     console.error('Error fetching and grouping cars:', error);

@@ -21,8 +21,6 @@ export default function ReservationForm() {
 
   const rentalContext = useRentalInfo();
 
-  console.log(rentalContext?.pickupDateTime);
-
   return (
     <Form {...form}>
       <form className='pt-5'>

@@ -1,4 +1,5 @@
 import AdditionalInformation from "@/components/reservation/additional-information";
+import ChargesSummary from "@/components/reservation/charges-summary";
 import CustomerInformation from "@/components/reservation/customer-information";
 import ReservationHeader from "@/components/reservation/header/reservation-header";
 import ReservationDetails from "@/components/reservation/reservation-details";
@@ -17,6 +18,7 @@ export default function Home() {
           <CustomerInformation />
           <AdditionalInformation />
         </div>
+        <ChargesSummary />
       </div>
     </main>
   );

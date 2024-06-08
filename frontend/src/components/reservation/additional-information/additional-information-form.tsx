@@ -3,6 +3,7 @@
 import { Checkbox } from '@/components/ui/checkbox';
 import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
 import { collisionDamageWaiverValue, liabilityInsuranceValue, rentalTaxValue } from '@/constants/additional-information-constants';
+import { useRentalInfo } from '@/providers/rental-info-provider';
 import { AdditionalInformationFormSchema } from '@/schemas/additional-information-form-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
@@ -19,6 +20,8 @@ export default function AdditionalInformationForm() {
     }
   });
 
+  const rentalContext = useRentalInfo();
+
   return (
     <Form {...form}>
       <form className='pt-5'>
@@ -31,7 +34,10 @@ export default function AdditionalInformationForm() {
                 <FormControl>
                   <Checkbox
                     checked={field.value}
-                    onCheckedChange={field.onChange}
+                    onCheckedChange={(checked) => {
+                      field.onChange();
+                      rentalContext?.setCollisionDamageWaiver(checked as boolean);
+                    }}
                   />
                 </FormControl>
                 <FormLabel className="flex w-full pb-2 justify-between font-normal items-center">
@@ -49,8 +55,10 @@ export default function AdditionalInformationForm() {
                 <FormControl>
                   <Checkbox
                     checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
+                    onCheckedChange={(checked) => {
+                      field.onChange();
+                      rentalContext?.setLiabilityInsurance(checked as boolean);
+                    }} />
                 </FormControl>
                 <FormLabel className="flex w-full pb-2 justify-between font-normal">
                   <p>Liability Insurance</p>
@@ -67,8 +75,10 @@ export default function AdditionalInformationForm() {
                 <FormControl>
                   <Checkbox
                     checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
+                    onCheckedChange={(checked) => {
+                      field.onChange();
+                      rentalContext?.setRentalTax(checked as boolean);
+                    }} />
                 </FormControl>
                 <FormLabel className="flex w-full pb-2 justify-between font-normal">
                   <p>Rental Tax</p>

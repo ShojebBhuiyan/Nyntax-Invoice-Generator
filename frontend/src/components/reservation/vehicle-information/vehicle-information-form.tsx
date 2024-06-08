@@ -1,6 +1,7 @@
 "use client";
 import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useRentalInfo } from '@/providers/rental-info-provider';
 import { VehicleInformationFormSchema } from '@/schemas/vehicle-information-schema';
 import { Car } from '@/types/car';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -22,6 +23,8 @@ export default function VehicleInformationForm({ carsList }: VehicleInformationF
       vehicle: '',
     }
   });
+
+  const rentalContext = useRentalInfo();
 
   return (
     <Form {...form}>
@@ -56,7 +59,19 @@ export default function VehicleInformationForm({ carsList }: VehicleInformationF
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Vehicle <span className='text-red-600'>*</span></FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select
+                  onValueChange={(value) => {
+                    field.onChange();
+                    const car = carsList[form.getValues("type")]?.find((car) => car.id === value);
+                    rentalContext?.setVehicle({
+                      make: car?.make!,
+                      model: car?.model!,
+                      dailyRate: car?.rates.daily!,
+                      hourlyRate: car?.rates.hourly!,
+                      weeklyRate: car?.rates.weekly!,
+                    });
+                  }}
+                  defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a vehicle" />

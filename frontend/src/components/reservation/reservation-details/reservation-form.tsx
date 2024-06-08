@@ -1,7 +1,8 @@
 "use client";
 
 import { Form, FormField, FormItem, FormLabel } from '@/components/ui/form';
-import { Input } from '@/components/ui/input'; import { ReservationFormSchema } from '@/schemas/reservation-form-schema';
+import { Input } from '@/components/ui/input'; import { useRentalInfo } from '@/providers/rental-info-provider';
+import { ReservationFormSchema } from '@/schemas/reservation-form-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -18,6 +19,8 @@ export default function ReservationForm() {
     }
   });
 
+  const rentalContext = useRentalInfo();
+
   return (
     <Form {...form}>
       <form className='pt-5'>
@@ -31,6 +34,9 @@ export default function ReservationForm() {
                 <Input
                   {...field}
                   type='text'
+                  onChange={(e) => {
+                    rentalContext?.setReservationId(e.target.value);
+                  }}
                 />
               </FormItem>
             )}
@@ -45,6 +51,9 @@ export default function ReservationForm() {
                   {...field}
                   type='datetime-local'
                   placeholder='Select Date and Time'
+                  onChange={(e) => {
+                    rentalContext?.setPickupDateTime(e.target.value);
+                  }}
                 />
               </FormItem>
             )}
@@ -59,6 +68,9 @@ export default function ReservationForm() {
                   {...field}
                   type='datetime-local'
                   placeholder='Select Date and Time'
+                  onChange={(e) => {
+                    rentalContext?.setReturnDateTime(e.target.value);
+                  }}
                 />
               </FormItem>
             )}
@@ -74,6 +86,9 @@ export default function ReservationForm() {
                     {...field}
                     type='text'
                     placeholder='1 Week 1 Day'
+                    onChange={(e) => {
+                      rentalContext?.setDuration(e.target.value);
+                    }}
                   />
                 </div>
 
@@ -89,6 +104,9 @@ export default function ReservationForm() {
                 <Input
                   {...field}
                   type='text'
+                  onChange={(e) => {
+                    rentalContext?.setDiscount(e.target.value);
+                  }}
                 />
               </FormItem>
             )}

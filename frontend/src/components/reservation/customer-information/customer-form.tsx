@@ -2,6 +2,7 @@
 
 import { Form, FormField, FormItem, FormLabel } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useRentalInfo } from '@/providers/rental-info-provider';
 import { CustomerFormSchema } from '@/schemas/customer-form-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
@@ -19,6 +20,8 @@ export default function CustomerForm() {
     }
   });
 
+  const rentalContext = useRentalInfo();
+
   return (
     <Form {...form}>
       <form className='pt-5'>
@@ -32,6 +35,9 @@ export default function CustomerForm() {
                 <Input
                   {...field}
                   type='text'
+                  onChange={(e) => {
+                    rentalContext?.setFirstName(e.target.value);
+                  }}
                 />
               </FormItem>
             )}
@@ -45,6 +51,9 @@ export default function CustomerForm() {
                 <Input
                   {...field}
                   type='text'
+                  onChange={(e) => {
+                    rentalContext?.setLastName(e.target.value);
+                  }}
                 />
               </FormItem>
             )}
@@ -58,6 +67,9 @@ export default function CustomerForm() {
                 <Input
                   {...field}
                   type='email'
+                  onChange={(e) => {
+                    rentalContext?.setEmail(e.target.value);
+                  }}
                 />
               </FormItem>
             )}
@@ -71,6 +83,9 @@ export default function CustomerForm() {
                 <Input
                   {...field}
                   type='tel'
+                  onChange={(e) => {
+                    rentalContext?.setPhone(e.target.value);
+                  }}
                 />
               </FormItem>
             )}

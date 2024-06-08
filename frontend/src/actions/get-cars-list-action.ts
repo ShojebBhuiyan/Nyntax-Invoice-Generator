@@ -1,21 +1,6 @@
 "use server";
 
-interface Car {
-  id: string;
-  make: string;
-  model: string;
-  year: number;
-  type: string;
-  seats: number;
-  bags: number;
-  features: string[];
-  rates: {
-    hourly: number;
-    daily: number;
-    weekly: number;
-  };
-  imageURL: string;
-}
+import { Car } from "@/types/car";
 
 interface ApiResponse {
   status: string;
@@ -23,7 +8,7 @@ interface ApiResponse {
   message: string;
 }
 
-async function getCarsList(): Promise<{ [key: string]: Car[]; }> {
+export async function getCarsList(): Promise<{ [key: string]: Car[]; }> {
   try {
     const response = await fetch("https://exam-server-7c41747804bf.herokuapp.com/carsList");
     const result: ApiResponse = await response.json();
@@ -41,6 +26,8 @@ async function getCarsList(): Promise<{ [key: string]: Car[]; }> {
       }
       groupedCars[car.type].push(car);
     });
+
+    console.log(groupedCars);
 
     return groupedCars;
   } catch (error) {

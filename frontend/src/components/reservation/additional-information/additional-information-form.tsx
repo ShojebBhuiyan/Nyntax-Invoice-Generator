@@ -1,7 +1,7 @@
 "use client";
 
 import { Checkbox } from '@/components/ui/checkbox';
-import { Form, FormField, FormItem, FormLabel } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
 import { collisionDamageWaiverValue, liabilityInsuranceValue, rentalTaxValue } from '@/constants/additional-information-constants';
 import { AdditionalInformationFormSchema } from '@/schemas/additional-information-form-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -28,10 +28,12 @@ export default function AdditionalInformationForm() {
             name='collisionDamageWaiver'
             render={({ field }) => (
               <FormItem className='flex items-center gap-2'>
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
                 <FormLabel className="flex w-full pb-2 justify-between font-normal items-center">
                   <p>Collision Damage Waiver</p>
                   <p>{`$${collisionDamageWaiverValue}`}</p>
@@ -44,10 +46,12 @@ export default function AdditionalInformationForm() {
             name='liabilityInsurance'
             render={({ field }) => (
               <FormItem className='flex gap-2 items-center'>
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
                 <FormLabel className="flex w-full pb-2 justify-between font-normal">
                   <p>Liability Insurance</p>
                   <p>{`$${liabilityInsuranceValue}`}</p>
@@ -60,10 +64,12 @@ export default function AdditionalInformationForm() {
             name='rentalTax'
             render={({ field }) => (
               <FormItem className='flex gap-2 items-center'>
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
                 <FormLabel className="flex w-full pb-2 justify-between font-normal">
                   <p>Rental Tax</p>
                   <p>{`${rentalTaxValue}%`}</p>

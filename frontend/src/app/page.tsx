@@ -1,3 +1,4 @@
+import AdditionalInformation from "@/components/reservation/additional-information";
 import CustomerInformation from "@/components/reservation/customer-information";
 import ReservationHeader from "@/components/reservation/header/reservation-header";
 import ReservationDetails from "@/components/reservation/reservation-details";
@@ -8,7 +9,10 @@ export default function Home() {
       <ReservationHeader />
       <div className="grid grid-cols-3 gap-5">
         <ReservationDetails />
-        <CustomerInformation />
+        <div className="grid grid-cols-1 gap-5">
+          <CustomerInformation />
+          <AdditionalInformation />
+        </div>
       </div>
     </main>
   );

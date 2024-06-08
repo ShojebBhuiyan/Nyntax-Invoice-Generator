@@ -36,6 +36,7 @@ export default function AdditionalInformationForm() {
                     checked={field.value}
                     onCheckedChange={(checked) => {
                       field.onChange();
+                      form.setValue('collisionDamageWaiver', checked as boolean);
                       rentalContext?.setCollisionDamageWaiver(checked as boolean);
                     }}
                   />
@@ -57,6 +58,7 @@ export default function AdditionalInformationForm() {
                     checked={field.value}
                     onCheckedChange={(checked) => {
                       field.onChange();
+                      form.setValue('liabilityInsurance', checked as boolean);
                       rentalContext?.setLiabilityInsurance(checked as boolean);
                     }} />
                 </FormControl>
@@ -77,6 +79,7 @@ export default function AdditionalInformationForm() {
                     checked={field.value}
                     onCheckedChange={(checked) => {
                       field.onChange();
+                      form.setValue('rentalTax', checked as boolean);
                       rentalContext?.setRentalTax(checked as boolean);
                     }} />
                 </FormControl>

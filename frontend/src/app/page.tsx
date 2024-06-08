@@ -7,18 +7,20 @@ import VehicleInformation from "@/components/reservation/vehicle-information";
 
 export default function Home() {
   return (
-    <main className="container py-6">
-      <ReservationHeader />
-      <div className="grid grid-cols-3 gap-5">
-        <div className="grid grid-cols-1 gap-5">
-          <ReservationDetails />
-          <VehicleInformation />
+    <main>
+      <div className="container py-6">
+        <ReservationHeader />
+        <div className="grid grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 gap-5">
+            <ReservationDetails />
+            <VehicleInformation />
+          </div>
+          <div className="grid grid-cols-1 gap-5">
+            <CustomerInformation />
+            <AdditionalInformation />
+          </div>
+          <ChargesSummary />
         </div>
-        <div className="grid grid-cols-1 gap-5">
-          <CustomerInformation />
-          <AdditionalInformation />
-        </div>
-        <ChargesSummary />
       </div>
     </main>
   );

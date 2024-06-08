@@ -9,7 +9,11 @@ import HourlyCharges from './hourly-charges';
 import { collisionDamageWaiverValue, liabilityInsuranceValue, rentalTaxValue } from '@/constants/additional-information-constants';
 import AdditionalChargeRow from './additional-charge-row';
 
-export default function ChargesTable() {
+interface ChargesTableProps {
+  mode: 'form' | 'invoice',
+}
+
+export default function ChargesTable({ mode }: ChargesTableProps) {
 
   const rentalContext = useRentalInfo();
 
@@ -26,7 +30,17 @@ export default function ChargesTable() {
 
 
   return (
-    <div className='container flex flex-col space-y-2 py-5 bg-[#DFDFFF] border border-[#5D5CFF] border-1 rounded-md'>
+    <div className='container flex flex-col space-y-2 py-5 rounded-md'
+      style={
+        mode === 'invoice' ?
+          {} :
+          {
+            background: '#DFDFFF',
+            borderColor: '#5D5CFF',
+            borderWidth: '1px',
+          }
+      }
+    >
       <div className='grid grid-cols-12 justify-between'>
         <div className='col-span-6'>
           <p className='font-bold'>Charge</p>
@@ -41,7 +55,7 @@ export default function ChargesTable() {
           <p className='font-bold'>Total</p>
         </div>
       </div>
-      <Separator className="bg-[#5D5CFF]" />
+      {mode === "form" && (<Separator className="bg-[#5D5CFF]" />)}
       <HourlyCharges
         unit={rentalContext?.vehicle ? 1 : 0}
         rate={rentalContext?.vehicle ? rentalContext?.vehicle?.hourlyRate! : 0}

@@ -36,6 +36,7 @@ export default function CustomerForm() {
                   {...field}
                   type='text'
                   onChange={(e) => {
+                    form.setValue('firstName', e.target.value);
                     rentalContext?.setFirstName(e.target.value);
                   }}
                 />
@@ -52,6 +53,7 @@ export default function CustomerForm() {
                   {...field}
                   type='text'
                   onChange={(e) => {
+                    form.setValue('lastName', e.target.value);
                     rentalContext?.setLastName(e.target.value);
                   }}
                 />
@@ -68,6 +70,7 @@ export default function CustomerForm() {
                   {...field}
                   type='email'
                   onChange={(e) => {
+                    form.setValue('email', e.target.value);
                     rentalContext?.setEmail(e.target.value);
                   }}
                 />
@@ -84,6 +87,7 @@ export default function CustomerForm() {
                   {...field}
                   type='tel'
                   onChange={(e) => {
+                    form.setValue('phone', e.target.value);
                     rentalContext?.setPhone(e.target.value);
                   }}
                 />

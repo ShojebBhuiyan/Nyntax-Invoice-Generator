@@ -37,6 +37,7 @@ export default function ReservationForm() {
                   {...field}
                   type='text'
                   onChange={(e) => {
+                    form.setValue('reservationId', e.target.value);
                     rentalContext?.setReservationId(e.target.value);
                   }}
                 />
@@ -52,8 +53,9 @@ export default function ReservationForm() {
                 <Input
                   {...field}
                   type='datetime-local'
-                  placeholder='Select Date and Time'
+                  placeholder='Select Date'
                   onChange={(e) => {
+                    form.setValue('pickupDateTime', e.target.value);
                     rentalContext?.setPickupDateTime(e.target.value);
                   }}
                 />
@@ -69,8 +71,9 @@ export default function ReservationForm() {
                 <Input
                   {...field}
                   type='datetime-local'
-                  placeholder='Select Date and Time'
+                  placeholder='Select Date'
                   onChange={(e) => {
+                    form.setValue('returnDateTime', e.target.value);
                     rentalContext?.setReturnDateTime(e.target.value);
                   }}
                 />
@@ -89,6 +92,7 @@ export default function ReservationForm() {
                     type='text'
                     placeholder='1 Week 1 Day'
                     onChange={(e) => {
+                      form.setValue('duration', e.target.value);
                       rentalContext?.setDuration(e.target.value);
                     }}
                   />
@@ -107,6 +111,7 @@ export default function ReservationForm() {
                   {...field}
                   type='text'
                   onChange={(e) => {
+                    form.setValue('discount', e.target.value);
                     rentalContext?.setDiscount(e.target.value);
                   }}
                 />

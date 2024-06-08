@@ -12,7 +12,7 @@ export default function ChargesSummary() {
         <Separator className='bg-[#5D5CFF]' />
       </div>
       <div className='pt-5'>
-        <ChargesTable />
+        <ChargesTable mode="form" />
       </div>
     </div>
   );

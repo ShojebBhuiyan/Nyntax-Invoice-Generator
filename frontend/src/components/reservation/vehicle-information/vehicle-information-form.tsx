@@ -1,6 +1,4 @@
 "use client";
-
-import { Checkbox } from '@/components/ui/checkbox';
 import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { VehicleInformationFormSchema } from '@/schemas/vehicle-information-schema';
@@ -33,7 +31,8 @@ export default function VehicleInformationForm({ carsList }: VehicleInformationF
             control={form.control}
             name='type'
             render={({ field }) => (
-              <FormItem className='flex items-center gap-2'>
+              <FormItem>
+                <FormLabel>Vehicle Type<span className='text-red-600'>*</span></FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
@@ -55,7 +54,8 @@ export default function VehicleInformationForm({ carsList }: VehicleInformationF
             control={form.control}
             name='vehicle'
             render={({ field }) => (
-              <FormItem className='flex items-center gap-2'>
+              <FormItem>
+                <FormLabel>Vehicle <span className='text-red-600'>*</span></FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
